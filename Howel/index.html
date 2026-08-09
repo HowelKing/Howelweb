@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MC Java & Bedrock 下载器</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Microsoft Yahei}
+body{background:#121212;color:#eaeaea;padding:16px}
+.container{max-width:1300px;margin:0 auto}
+.header{text-align:center;padding:20px 0;border-bottom:1px solid #333;margin-bottom:24px}
+h1{color:#4fc3f7;font-size:28px}
+.sub{color:#aaa;margin-top:6px}
+.tab-box{display:flex;gap:8px;margin-bottom:16px}
+.tab{padding:10px 20px;background:#222;border:1px solid #444;border-radius:6px;cursor:pointer}
+.tab.active{background:#2196f3;color:#fff;border-color:#2196f3}
+.panel{display:none;background:#1e1e1e;border:1px solid #333;border-radius:8px;padding:20px}
+.panel.show{display:block}
+.item{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#292929;border-radius:6px;margin-bottom:10px}
+.info h3{color:#fff;font-size:16px}
+.info p{color:#999;font-size:13px;margin-top:3px}
+.btn-group{display:flex;gap:8px}
+button{border:none;padding:7px 14px;border-radius:4px;cursor:pointer;font-size:14px}
+.copy{background:#388e3c;color:#fff}
+.dl{background:#0288d1;color:#fff}
+.export{width:100%;margin-top:20px;padding:10px;background:#ff7800;color:#fff;font-weight:bold}
+#output{width:100%;min-height:180px;background:#222;color:#eee;padding:12px;border:1px solid #444;border-radius:6px;margin-top:12px;font-family:Consolas}
+@media(max-width:768px){.item{flex-direction:column;align-items:flex-start;gap:10px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>Minecraft Java / Bedrock 下载聚合器</h1>
+<div class="sub">官方启动器 | PCL2 | HMCL | Forge Fabric | BDS 基岩服务端</div>
+</div>
+
+<div class="tab-box">
+<div class="tab active" data-tab="java">Java版资源</div>
+<div class="tab" data-tab="bedrock">Bedrock基岩版资源</div>
+</div>
+
+<!-- Java 面板 -->
+<div class="panel show" id="java">
+<div class="item">
+<div class="info">
+<h3>Minecraft 官方Java启动器</h3>
+<p>Windows/Mac/Linux 原版启动器</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://www.minecraft.net/zh-hans/download">复制链接</button>
+<button class="dl" data-link="https://www.minecraft.net/zh-hans/download">打开下载页</button>
+</div>
+</div>
+<div class="item">
+<div class="info">
+<h3>PCL2 第三方启动器</h3>
+<p>轻量高性能Java启动器，主流首选</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://github.com/huanghongxun/HMCL-PCL2/releases">复制链接</button>
+<button class="dl" data-link="https://github.com/huanghongxun/HMCL-PCL2/releases">打开下载页</button>
+</div>
+</div>
+<div class="item">
+<div class="info">
+<h3>HMCL 启动器</h3>
+<p>老牌多功能启动器，支持离线/正版</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://hmcl.huangyuhui.net/download">复制链接</button>
+<button class="dl" data-link="https://hmcl.huangyuhui.net/download">打开下载页</button>
+</div>
+</div>
+<div class="item">
+<div class="info">
+<h3>Forge MDK 模组开发包</h3>
+<p>全版本Forge开发MDK下载站</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://files.minecraftforge.net/">复制链接</button>
+<button class="dl" data-link="https://files.minecraftforge.net/">打开下载页</button>
+</div>
+</div>
+<div class="item">
+<div class="info">
+<h3>Fabric Loader & Fabric API</h3>
+<p>轻量模组加载器，新版本主流</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://fabricmc.net/">复制链接</button>
+<button class="dl" data-link="https://fabricmc.net/">打开下载页</button>
+</div>
+</div>
+<div class="item">
+<div class="info">
+<h3>CurseForge Mod 模组平台</h3>
+<p>整合包、海量模组下载</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://www.curseforge.com/minecraft/mc-mods">复制链接</button>
+<button class="dl" data-link="https://www.curseforge.com/minecraft/mc-mods">打开下载页</button>
+</div>
+</div>
+</div>
+
+<!-- Bedrock 面板 -->
+<div class="panel" id="bedrock">
+<div class="item">
+<div class="info">
+<h3>BDS 官方基岩版服务端</h3>
+<p>Windows/Linux 开服核心程序</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://www.minecraft.net/en-us/download/server/bedrock">复制链接</button>
+<button class="dl" data-link="https://www.minecraft.net/en-us/download/server/bedrock">打开下载页</button>
+</div>
+</div>
+<div class="item">
+<div class="info">
+<h3>MCPE 基岩版安卓客户端</h3>
+<p>APK 官方分发渠道</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe">复制链接</button>
+<button class="dl" data-link="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe">打开下载页</button>
+</div>
+</div>
+<div class="item">
+<div class="info">
+<h3>BlockLauncher 基岩模组启动器</h3>
+<p>安卓基岩版加载Addon、模组</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://github.com/zhuowei/BlockLauncher">复制链接</button>
+<button class="dl" data-link="https://github.com/zhuowei/BlockLauncher">打开下载页</button>
+</div>
+</div>
+<div class="item">
+<div class="info">
+<h3>Bedrock Dedicated Server 国内镜像</h3>
+<p>加速BDS核心下载</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://mirror.ghproxy.com/https://github.com/Mojang/bedrock-server-archive">复制链接</button>
+<button class="dl" data-link="https://mirror.ghproxy.com/https://github.com/Mojang/bedrock-server-archive">打开下载页</button>
+</div>
+</div>
+<div class="item">
+<div class="info">
+<h3>基岩版Addon资源站</h3>
+<p>材质包、行为包、地图下载</p>
+</div>
+<div class="btn-group">
+<button class="copy" data-link="https://www.minecraft.net/zh-hans/addons">复制链接</button>
+<button class="dl" data-link="https://www.minecraft.net/zh-hans/addons">打开下载页</button>
+</div>
+</div>
+</div>
+
+<textarea id="output" readonly placeholder="点击复制链接，所有链接会汇总在此，可一键导出保存"></textarea>
+<button class="export" id="saveTxt">导出全部链接为TXT文件</button>
+</div>
+
+<script>
+// 标签切换
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+tabs.forEach(t=>{
+    t.onclick=()=>{
+        tabs.forEach(x=>x.classList.remove('active'));
+        panels.forEach(x=>x.classList.remove('show'));
+        t.classList.add('active');
+        document.getElementById(t.dataset.tab).classList.add('show');
+    }
+})
+
+let linkList = [];
+const output = document.getElementById('output');
+
+// 复制按钮
+document.querySelectorAll('.copy').forEach(btn=>{
+    btn.onclick=async()=>{
+        const url = btn.dataset.link;
+        await navigator.clipboard.writeText(url);
+        alert("已复制链接："+url);
+        if(!linkList.includes(url)){
+            linkList.push(url);
+            output.value = linkList.join("\n");
+        }
+    }
+})
+
+// 跳转下载页
+document.querySelectorAll('.dl').forEach(btn=>{
+    btn.onclick=()=>window.open(btn.dataset.link,"_blank");
+})
+
+// 导出txt
+document.getElementById('saveTxt').onclick=()=>{
+    if(linkList.length===0){
+        alert("暂无链接，请先点击复制链接");
+        return;
+    }
+    const blob = new Blob([linkList.join("\n")],{type:"text/plain"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "MC下载链接清单.txt";
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>
